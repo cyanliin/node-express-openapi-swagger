@@ -5,6 +5,10 @@ RESTful API with Express, Swagger, OpenAPI
 - API Definition write above function in same js file. (in /routers/*.js)
 
 ``` js
+// /routers/user.js
+
+...
+
 /**
  * @openapi
  * /user/{userId}:
@@ -56,6 +60,8 @@ userApi.get('/', (req, res) => {
   var user = JSON.parse(req.body)
   res.send('user info is ' + JSON.stringify(user))
 })
+
+...
 ```
 ## API Doc
 ```
