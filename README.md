@@ -63,6 +63,11 @@ userApi.get('/', (req, res) => {
 
 ...
 ```
+
+## Usage
+```
+npm run start
+```
 ## API Doc
 ```
 http://localhost:3301/api-docs/
