@@ -31,17 +31,21 @@ userApi.use(bodyParser.text({type: '*/*'}))
  *                  type: string
  *                  format: uuid
  *                  example: 123e4567-e89b-12d3-a456-426655440000
+ *                  description: ID
  *                name:
  *                  type: string
  *                  example: John Doe
+ *                  description: Name
  *                email:
  *                  type: string
  *                  format: email
  *                  example: john.doe@example.com
+ *                  description: E-mail
  *                age:
  *                  type: integer
  *                  format: int32
  *                  example: 30
+ *                  description: Age
  *      '400':
  *        description: Bad request. User ID must be an integer and larger than 0.
  *      '401':
@@ -75,14 +79,17 @@ userApi.get('/', (req, res) => {
  *                name:
  *                  type: string
  *                  example: John Doe
+ *                  description: Name
  *                email:
  *                  type: string
  *                  format: email
  *                  example: john.doe@example.com
+ *                  description: E-mail
  *                age:
  *                  type: integer
  *                  format: int32
  *                  example: 30
+ *                  description: Age
  *              required:
  *                - name
  *                - email
@@ -98,17 +105,21 @@ userApi.get('/', (req, res) => {
  *                  type: string
  *                  format: uuid
  *                  example: 123e4567-e89b-12d3-a456-426655440000
+ *                  description: ID
  *                name:
  *                  type: string
  *                  example: John Doe
+ *                  description: Name
  *                email:
  *                  type: string
  *                  format: email
  *                  example: john.doe@example.com
+ *                  description: E-mail
  *                age:
  *                  type: integer
  *                  format: int32
  *                  example: 30
+ *                  description: Age
  */
 userApi.post('/', (req, res) => {
   var user = JSON.parse(req.body)
@@ -144,14 +155,17 @@ userApi.post('/', (req, res) => {
  *                name:
  *                  type: string
  *                  example: John Doe
+ *                  description: Name
  *                email:
  *                  type: string
  *                  format: email
  *                  example: john.doe@example.com
+ *                  description: E-mail
  *                age:
  *                  type: integer
  *                  format: int32
  *                  example: 30
+ *                  description: Age
  *              required:
  *                - name
  *                - email
@@ -167,17 +181,21 @@ userApi.post('/', (req, res) => {
  *                  type: string
  *                  format: uuid
  *                  example: 123e4567-e89b-12d3-a456-426655440000
+ *                  description: ID
  *                name:
  *                  type: string
  *                  example: John Doe
+ *                  description: Name
  *                email:
  *                  type: string
  *                  format: email
  *                  example: john.doe@example.com
+ *                  description: E-mail
  *                age:
  *                  type: integer
  *                  format: int32
  *                  example: 30
+ *                  description: Age
  *      '400':
  *        description: Bad request - Invalid input data
  *      '404':
