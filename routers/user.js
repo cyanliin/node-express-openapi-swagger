@@ -8,7 +8,8 @@ userApi.use(bodyParser.text({type: '*/*'}))
  * @openapi
  * /user/{userId}:
  *  get:
- *    tags: [User Management]
+ *    tags:
+ *      - User
  *    summary: Get a user data
  *    description: Get a user data by id
  *    parameters: 
@@ -60,9 +61,10 @@ userApi.get('/', (req, res) => {
  * @openapi
  * /user:
  *  post:
- *    tags: [User Management]
+ *    tags:
+ *      - User
  *    summary: Add a user
- *    description: Add a user
+ *    description: Add user
  *    requestBody:
  *      required: true
  *      content:
@@ -113,12 +115,108 @@ userApi.post('/', (req, res) => {
   res.send('get user data, user name is ' + user.name)
 })
 
+
+/**
+ * @openapi
+ * /user/{userId}:
+ *  put:
+ *    tags:
+ *      - User
+ *    summary: Update user data
+ *    description: Endpoint to update user data with the provided data.
+ *    operationId: updateUser
+ *    parameters:
+ *      - name: userId
+ *        in: path
+ *        description: ID of the user to update
+ *        required: true
+ *        schema:
+ *          type: string
+ *          format: uuid
+ *    requestBody:
+ *      description: User data to be updated
+ *      required: true
+ *      content:
+ *        application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                name:
+ *                  type: string
+ *                  example: John Doe
+ *                email:
+ *                  type: string
+ *                  format: email
+ *                  example: john.doe@example.com
+ *                age:
+ *                  type: integer
+ *                  format: int32
+ *                  example: 30
+ *              required:
+ *                - name
+ *                - email
+ *    responses:
+ *      '200':
+ *        description: User updated successfully
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                id:
+ *                  type: string
+ *                  format: uuid
+ *                  example: 123e4567-e89b-12d3-a456-426655440000
+ *                name:
+ *                  type: string
+ *                  example: John Doe
+ *                email:
+ *                  type: string
+ *                  format: email
+ *                  example: john.doe@example.com
+ *                age:
+ *                  type: integer
+ *                  format: int32
+ *                  example: 30
+ *      '400':
+ *        description: Bad request - Invalid input data
+ *      '404':
+ *        description: User not found
+ *      '500':
+ *        description: Internal Server Error
+ */
 userApi.put('/', (req, res) => {
   var user = JSON.parse(req.body)
   user.age += 1
   res.send('return user info is ' + JSON.stringify(user))
 })
 
+
+/**
+ * @openapi
+ * /user/{userId}:
+ *  delete:
+ *    tags:
+ *      - User
+ *    summary: Delete user
+ *    description: Endpoint to delete a user by ID.
+ *    operationId: deleteUser
+ *    parameters:
+ *      - name: userId
+ *        in: path
+ *        description: ID of the user to delete
+ *        required: true
+ *        schema:
+ *          type: string
+ *          format: uuid
+ *    responses:
+ *      '204':
+ *        description: User deleted successfully
+ *      '404':
+ *        description: User not found
+ *      '500':
+ *        description: Internal Server Error
+ */
 userApi.delete('/', (req, res) => {
   var user = JSON.parse(req.body)
   res.send('user is deleted : ' + user.name)
